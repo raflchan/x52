@@ -10,6 +10,7 @@ public:
 	X52();
 	~X52();
 	std::vector<void*> devices;
+	std::vector<X52Device*> x52devices;
 
 	void init();
 	void test();
@@ -17,7 +18,6 @@ public:
 
 private:
 
-	std::vector<X52Device> x52devices;
 
 	void device_add(void* hDevice);
 	void device_remove(void* hDevice);

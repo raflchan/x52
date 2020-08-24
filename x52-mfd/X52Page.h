@@ -10,6 +10,8 @@ public:
 	X52Page(std::tuple<std::string, std::string, std::string> text);
 	X52Page(std::tuple<std::string, std::string, std::string> text, bool interactive);
 
+	const int id;
+
 	std::string get_text_top();
 	std::string get_text_mid();
 	std::string get_text_bot();

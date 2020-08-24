@@ -11,13 +11,16 @@ public:
 	void* x52;
 
 	X52Device(void* hDevice, void* x52);
+	~X52Device();
 
 
 	void* hDevice_get();
 
-	void page_add(X52Page page);
+	void page_add(X52Page* page);
 	void page_set(unsigned int pagenr);
-	unsigned int page_get_number(X52Page page);
+	unsigned int page_get_number(X52Page* page);
+
+	void setSelectCallback(void(*selectCallback)(std::tuple<int, int>));
 
 
 
@@ -29,8 +32,9 @@ private:
 	short current_selection;
 	std::string guid;
 	unsigned int current_page;
-	std::vector<X52Page> pages;
+	std::vector<X52Page*> pages;
 
+	void(*selectCallback)(std::tuple<int, int>);
 
 	void drawPage();
 	void handle_input(DWORD dwButton);

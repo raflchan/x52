@@ -2,8 +2,9 @@
 
 #include "stdafx.h"
 
+static int _id_cnt = 0;
 
-X52Page::X52Page()
+X52Page::X52Page() : id(_id_cnt++)
 {
 	this->interactive = false;
 	this->top = "";
@@ -11,7 +12,7 @@ X52Page::X52Page()
 	this->bot = "";
 }
 
-X52Page::X52Page(bool interactive)
+X52Page::X52Page(bool interactive) : id(_id_cnt++)
 {
 	this->interactive = interactive;
 	this->top = "";
@@ -19,7 +20,7 @@ X52Page::X52Page(bool interactive)
 	this->bot = "";
 }
 
-X52Page::X52Page(std::tuple<std::string, std::string, std::string> text)
+X52Page::X52Page(std::tuple<std::string, std::string, std::string> text) : id(_id_cnt++)
 {
 	this->interactive = false;
 	this->top = std::get<0>(text);
@@ -27,13 +28,12 @@ X52Page::X52Page(std::tuple<std::string, std::string, std::string> text)
 	this->bot = std::get<2>(text);
 }
 
-X52Page::X52Page(std::tuple<std::string, std::string, std::string> text, bool interactive)
+X52Page::X52Page(std::tuple<std::string, std::string, std::string> text, bool interactive) : id(_id_cnt++)
 {
 	this->interactive = interactive;
 	this->top = std::get<0>(text);
 	this->mid = std::get<1>(text);
 	this->bot = std::get<2>(text);
-
 }
 
 std::string X52Page::get_text_top()

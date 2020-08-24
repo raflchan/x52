@@ -3,9 +3,13 @@
 
 #include "stdafx.h"
 
-
 #include "X52.h"
+#include "X52Device.h"
 
+void select_callback_func(std::tuple<int, int> val)
+{
+	LOG_DEBUG("Select on Page-Id " + std::to_string(std::get<0>(val)) + " on item " + std::to_string(std::get<1>(val)));
+}
 
 int main()
 {
@@ -14,9 +18,10 @@ int main()
 		auto x52 = X52::X52();
 
 		x52.init();
-		//x52.test();
+		X52Device* device = x52.x52devices[0];
+		device->setSelectCallback(select_callback_func);
 
-		int _x;
+		std::string _x;
 		std::cin >> _x;
 
 	}
@@ -25,5 +30,3 @@ int main()
 	}
 
 }
-
-

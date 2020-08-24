@@ -3,10 +3,6 @@
 #include "utils.h"
 
 
-void __stdcall DirectOutput_Device_Callback(void* hDevice, bool bAdded, void* pvContext);
-void __stdcall DirectOutput_SoftButton_Callback(void* hDevice, DWORD dwButtons, void* pvContext);
-void __stdcall DirectOutput_Enumerate_Callback(void* hDevice, void* pvContext);
-
 static bool _instantiated = false;
 
 
@@ -35,7 +31,7 @@ void X52::init()
 void X52::device_add(void* hDevice)
 {
 	this->devices.push_back(hDevice);
-	this->x52devices.push_back(X52Device(hDevice, this));
+	this->x52devices.push_back(new X52Device(hDevice, this));
 }
 
 void X52::device_remove(void* hDevice)
@@ -51,8 +47,9 @@ void X52::device_remove(void* hDevice)
 
 	for (auto iter = this->x52devices.begin(); iter != this->x52devices.end(); iter++)
 	{
-		if ((*iter).hDevice_get() == hDevice)
+		if ((**iter).hDevice_get() == hDevice)
 		{
+			delete static_cast<X52Device*>(*iter);
 			this->x52devices.erase(iter);
 			break;
 		}
@@ -99,8 +96,8 @@ void X52::test()
 X52Device* X52::device_get(void* hDevice)
 {
 	for (auto it = this->x52devices.begin(); it != this->x52devices.end(); it++)
-		if ((*it).hDevice_get() == hDevice)
-			return &(*it);
+		if ((**it).hDevice_get() == hDevice)
+			return &(**it);
 
 	return nullptr;
 }

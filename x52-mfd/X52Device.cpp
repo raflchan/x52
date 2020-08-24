@@ -17,6 +17,7 @@ X52Device::X52Device(void* hDevice, void* x52)
 	this->pageName = L"TestPage";
 	this->current_selection = 0;
 	this->guid = guid_to_str(static_cast<GUID*>(hDevice));
+	this->selectCallback = nullptr;
 
 	DO_ERROR(DirectOutput_RegisterPageCallback(this->hDevice, this->DirectOutput_Page_Callback, this->x52));
 	LOG_INFO("Registered devices page callback! " + guid_to_str(static_cast<GUID*>(hDevice)));
@@ -28,35 +29,45 @@ X52Device::X52Device(void* hDevice, void* x52)
 	LOG_INFO("Registered device data page! " + guid_to_str(static_cast<GUID*>(hDevice)));
 
 
-	//X52Page page(std::make_tuple("Site1: Item 1", "Site1: Item 2 >", "Site1: Item 3 >"), true);
-	//this->page_add(page);
+	X52Page* page = new X52Page(std::make_tuple("Site1: Item 1", "Site1: Item 2 >", "Site1: Item 3 >"), true);
+	this->page_add(page);
 
-	//X52Page page2(std::make_tuple("Site 2", "No Interaction", "Only Text"), false);
-	//this->page_add(page2);
+	X52Page* page2 = new X52Page(std::make_tuple("Site 2", "No Interaction", "Only Text"), false);
+	this->page_add(page2);
 
-	//X52Page page3(std::make_tuple("Site3: Item 4", "Site3: Item 5", "Site3: Item 6"), true);
-	//this->page_add(page3);
+	X52Page* page3 = new X52Page(std::make_tuple("Site3: Item 4", "Site3: Item 5", "Site3: Item 6"), true);
+	this->page_add(page3);
 
 	this->drawPage();
 }
 
-void X52Device::page_add(X52Page page)
+X52Device::~X52Device()
+{
+
+}
+
+void X52Device::page_add(X52Page* page)
 {
 	this->pages.push_back(page);
 }
 
-unsigned int X52Device::page_get_number(X52Page page)
+unsigned int X52Device::page_get_number(X52Page* page)
 {
 	int i = 0;
 	for (auto it = this->pages.begin(); it != pages.end(); it++)
 	{
-		if (*it == page)
+		if (**it == page)
 			return i;
 
 		i++;
 	}
 
 	throw std::runtime_error("Page not registered!");
+}
+
+void X52Device::setSelectCallback(void(*callback)(std::tuple<int, int>))
+{
+	this->selectCallback = callback;
 }
 
 void X52Device::page_set(unsigned int pagenr)
@@ -89,13 +100,13 @@ void X52Device::drawPage()
 		return;
 	}
 
-	auto page = this->pages.at(this->current_page);
+	X52Page* page = this->pages.at(this->current_page);
 	
-	std::string top = page.get_text_top();
-	std::string mid = page.get_text_mid();
-	std::string bot = page.get_text_bot();
+	std::string top = page->get_text_top();
+	std::string mid = page->get_text_mid();
+	std::string bot = page->get_text_bot();
 
-	if (page.is_interactive())
+	if (page->is_interactive())
 	{
 		switch (this->current_selection)
 		{
@@ -178,6 +189,11 @@ void X52Device::handle_input(DWORD dwButton)
 
 		case SoftButton_Select:
 			LOG_DEBUG("Select");
+			if (this->pages.size() > 0 && this->selectCallback)
+			{
+				X52Page* page = this->pages.at(this->current_page);
+				this->selectCallback(std::make_tuple(page->id, this->current_selection));
+			}
 			break;
 
 		default:
@@ -192,9 +208,10 @@ void X52Device::vertical_movement(DWORD direction)
 	if (this->pages.size() == 0) return;
 
 	auto page_nr = this->current_page;
-	X52Page page = this->pages.at(page_nr);
+	X52Page* page = this->pages.at(page_nr);
 
-	if (page.is_interactive())
+	// TODO: doesn't react well to scrolling with non_interactive pages, results in misaligned pointer (>)
+	if (page->is_interactive())
 	{
 		int a;
 		int b;
