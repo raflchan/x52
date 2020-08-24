@@ -70,7 +70,7 @@ void X52Device::page_set(unsigned int pagenr)
 	throw std::runtime_error("Invalid Page Nr.!");
 }
 
-const void* X52Device::hDevice_get()
+void* X52Device::hDevice_get()
 {
 	return this->hDevice;
 }

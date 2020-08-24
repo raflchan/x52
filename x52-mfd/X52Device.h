@@ -8,12 +8,12 @@
 class X52Device
 {
 public:
-	const void* x52;
+	void* x52;
 
 	X52Device(void* hDevice, void* x52);
 
 
-	const void* hDevice_get();
+	void* hDevice_get();
 
 	void page_add(X52Page page);
 	void page_set(unsigned int pagenr);
