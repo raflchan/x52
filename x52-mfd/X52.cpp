@@ -27,15 +27,15 @@ void X52::init()
 {
 	const wchar_t* appname = L"rafl app";
 
-	DO_CALL(DirectOutput_Initialize(appname));
-	DO_CALL(DirectOutput_RegisterDeviceCallback(this->DirectOutput_Device_Callback, this));
-	DO_CALL(DirectOutput_Enumerate(this->DirectOutput_Enumerate_Callback, this));
+	DO_ERROR(DirectOutput_Initialize(appname));
+	DO_ERROR(DirectOutput_RegisterDeviceCallback(this->DirectOutput_Device_Callback, this));
+	DO_ERROR(DirectOutput_Enumerate(this->DirectOutput_Enumerate_Callback, this));
 }
 
 void X52::device_add(void* hDevice)
 {
 	this->devices.push_back(hDevice);
-	this->x52devices.push_back(X52Device(hDevice));
+	this->x52devices.push_back(X52Device(hDevice, this));
 }
 
 void X52::device_remove(void* hDevice)
@@ -65,11 +65,11 @@ void __stdcall X52::DirectOutput_Device_Callback(void* hDevice, bool bAdded, voi
 	if (bAdded)
 	{
 		x52->device_add(hDevice);
-		std::cout << "Added a device! " << guid_to_str(static_cast<GUID*>(hDevice)) << std::endl;
+		LOG_INFO("Added a device! " + guid_to_str(static_cast<GUID*>(hDevice)));
 	}
 	else {
 		x52->device_remove(hDevice);
-		std::cout << "Removed a device! " << guid_to_str(static_cast<GUID*>(hDevice)) << std::endl;
+		LOG_INFO("Removed a device! " + guid_to_str(static_cast<GUID*>(hDevice)));
 	}
 }
 
@@ -77,7 +77,7 @@ void __stdcall X52::DirectOutput_Enumerate_Callback(void* hDevice, void* pvConte
 {
 	X52* x52 = static_cast<X52*>(pvContext);
 	x52->device_add(hDevice);
-	std::cout << "Detected a device! " << guid_to_str(static_cast<GUID*>(hDevice)) << std::endl;
+	LOG_INFO("Detected a device! " + guid_to_str(static_cast<GUID*>(hDevice)));
 }
 
 void X52::test()
@@ -85,13 +85,22 @@ void X52::test()
 
 	DWORD dwPage = 0x00;
 	const wchar_t* pageDebugName = L"TestPage";
-	DO_CALL(DirectOutput_AddPage(devices[0], dwPage, pageDebugName, FLAG_SET_AS_ACTIVE));
+	DO_ERROR(DirectOutput_AddPage(devices[0], dwPage, pageDebugName, FLAG_SET_AS_ACTIVE));
 
 
 	int _x;
 	std::cin >> _x;
 
-	DO_CALL(DirectOutput_Deinitialize());
-	std::cout << "Programm exited nominally!" << std::endl;
+	DO_ERROR(DirectOutput_Deinitialize());
+	LOG_INFO("Programm exited nominally!");
 	exit(EXIT_SUCCESS);
+}
+
+X52Device* X52::device_get(void* hDevice)
+{
+	for (auto it = this->x52devices.begin(); it != this->x52devices.end(); it++)
+		if ((*it).hDevice_get() == hDevice)
+			return &(*it);
+
+	return nullptr;
 }

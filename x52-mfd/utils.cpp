@@ -1,5 +1,5 @@
 #include "utils.h"
-
+#include "stdafx.h"
 
 std::string guid_to_str(GUID* guid)
 {
@@ -41,13 +41,4 @@ void exit_critically(HRESULT res)
 	std::cout << "Error encountered: ";
 	std::wcout << errMsg << std::endl;
 	exit(EXIT_FAILURE);
-}
-
-void DO_CALL(HRESULT res)
-{
-	if (res != S_OK)
-	{
-		__debugbreak();
-		exit_critically(res);
-	}
 }

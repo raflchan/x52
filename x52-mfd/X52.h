@@ -9,10 +9,11 @@ class X52
 public:
 	X52();
 	~X52();
+	std::vector<void*> devices;
+
 	void init();
 	void test();
-
-	std::vector<void*> devices;
+	X52Device* device_get(void* hDevice);
 
 private:
 
