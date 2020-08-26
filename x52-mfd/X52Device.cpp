@@ -43,7 +43,6 @@ X52Device::X52Device(void* hDevice, void* x52)
 
 X52Device::~X52Device()
 {
-
 }
 
 void X52Device::page_add(X52Page* page)

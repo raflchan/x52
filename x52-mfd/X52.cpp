@@ -17,6 +17,8 @@ X52::X52()
 X52::~X52()
 {
 	_instantiated = false;
+	DO_WARN(DirectOutput_Deinitialize());
+	LOG_DEBUG("Unloaded DirectOutput!");
 }
 
 void X52::init()

@@ -2,6 +2,9 @@
 
 #include "stdafx.h"
 
+#define X52_LOGGING
+#ifdef X52_LOGGING
+
 #define LOG_DEBUG(x) \
 	std::cout << "[DEBUG] " << __FILE__ << ":" << std::dec << __LINE__ << " " << x << std::endl;
 
@@ -24,6 +27,7 @@
 #define DO_WARN(x)		\
 	if (x != S_OK){LOG_WARN("Failed DirectOutput call!");} else nullptr
 
+#endif // X52_LOGGING
 
 std::string guid_to_str(GUID* guid);
 unsigned long long current_time_millis();

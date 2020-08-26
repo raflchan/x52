@@ -9,7 +9,7 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(x52_mfd, m) {
+PYBIND11_MODULE(x52, m) {
 
     m.doc() = "rafls fun lib";
 
