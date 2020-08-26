@@ -58,13 +58,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="setup.py">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="LICENSE">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="README.md">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="setup.py">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="x52\__init__.py">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

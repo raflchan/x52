@@ -341,3 +341,6 @@ healthchecksdb
 /x52-mfd/venv
 /python
 /x52-mfd/venv
+/x52/x52.egg-info
+/x52/dist
+/x52/build/lib.win-amd64-3.8

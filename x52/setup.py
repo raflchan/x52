@@ -3,7 +3,8 @@ import setuptools
 
 import pybind11
 
-module_name = 'x52'
+package_name = 'x52'
+module_name = '_x52'
 
 def create_sources() -> list:
     _sources = []
@@ -20,6 +21,8 @@ libraries = ['DirectOutput']
 library_dirs = ['dependencies/DirectOutput/Lib/']
 define_macros = [('PYBIND_BUILD', 1)]
 
+package_data = {'': ['DirectOutput.dll']}
+
 sfc_module = setuptools.Extension(
     module_name, sources=sources,
     libraries=libraries,
@@ -34,8 +37,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name=module_name,
-    version="0.0.1",
+    name=package_name,
+    version="0.0.2",
     author="rafl",
     # author_email="placeholder.author@example.com",
     description="A simple to use package to utilize the MFD on the Throttle of the X52 and X52 Pro.",
@@ -49,5 +52,7 @@ setuptools.setup(
         "Operating System :: Microsoft :: Windows",
     ],
     python_requires='>=3.6',
-    ext_modules=[sfc_module]
+    ext_modules=[sfc_module],
+    include_package_data=True,
+    package_data=package_data
 )
