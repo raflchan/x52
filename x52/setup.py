@@ -6,14 +6,6 @@ import pybind11
 package_name = 'x52'
 module_name = '_x52'
 
-def create_sources() -> list:
-    _sources = []
-    for fd in os.path.dirname(__file__):
-        if fd.endswith('.cpp'):
-            _sources.append(fd)
-    return _sources
-
-#sources = create_sources()
 sources = ['main.cpp', 'stdafx.cpp', 'utils.cpp', 'X52.cpp', 'X52Device.cpp', 'X52Page.cpp', 'x52_python_wrapper.cpp']
 
 cpp_args = ['-std=c++11', '-stdlib=libc++', '-mmacosx-version-min=10.7']
