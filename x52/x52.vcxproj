@@ -298,7 +298,12 @@
     <ClInclude Include="x52_ids.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="LICENSE" />
+    <None Include="README.md" />
     <None Include="setup.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="requirements.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
