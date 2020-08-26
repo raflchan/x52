@@ -338,3 +338,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/x52-mfd/venv
+/python
+/x52-mfd/venv

@@ -33,6 +33,9 @@
     <ClCompile Include="X52Page.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="x52_python_wrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -53,5 +56,10 @@
     <ClInclude Include="X52Page.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="setup.py">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

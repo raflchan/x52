@@ -19,7 +19,6 @@ int main()
 
 		x52.init();
 		X52Device* device = x52.x52devices[0];
-		device->setSelectCallback(select_callback_func);
 
 		std::string _x;
 		std::cin >> _x;

@@ -5,16 +5,40 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "x52-mfd", "x52-mfd\x52-mfd.vcxproj", "{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "python", "python\python.pyproj", "{B418318F-AF1F-4966-83F7-8F03031E982B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
+		pybind Debug|Any CPU = pybind Debug|Any CPU
+		pybind Debug|x64 = pybind Debug|x64
+		pybind Release|Any CPU = pybind Release|Any CPU
+		pybind Release|x64 = pybind Release|x64
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.Debug|x64.ActiveCfg = Debug|x64
 		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.Debug|x64.Build.0 = Debug|x64
+		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.pybind Debug|Any CPU.ActiveCfg = pybind Debug|Win32
+		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.pybind Debug|x64.ActiveCfg = pybind Debug|x64
+		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.pybind Debug|x64.Build.0 = pybind Debug|x64
+		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.pybind Release|Any CPU.ActiveCfg = pybind Release|Win32
+		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.pybind Release|x64.ActiveCfg = pybind Release|x64
+		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.pybind Release|x64.Build.0 = pybind Release|x64
+		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.Release|Any CPU.ActiveCfg = Release|Win32
 		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.Release|x64.ActiveCfg = Release|x64
 		{2AFCA175-8CF9-4BC5-91EF-1869222B19CE}.Release|x64.Build.0 = Release|x64
+		{B418318F-AF1F-4966-83F7-8F03031E982B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B418318F-AF1F-4966-83F7-8F03031E982B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B418318F-AF1F-4966-83F7-8F03031E982B}.pybind Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B418318F-AF1F-4966-83F7-8F03031E982B}.pybind Debug|x64.ActiveCfg = Debug|Any CPU
+		{B418318F-AF1F-4966-83F7-8F03031E982B}.pybind Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B418318F-AF1F-4966-83F7-8F03031E982B}.pybind Release|x64.ActiveCfg = Release|Any CPU
+		{B418318F-AF1F-4966-83F7-8F03031E982B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B418318F-AF1F-4966-83F7-8F03031E982B}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

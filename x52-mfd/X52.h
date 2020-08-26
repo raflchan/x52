@@ -16,6 +16,9 @@ public:
 	void test();
 	X52Device* device_get(void* hDevice);
 
+	std::vector<X52Device*> get_x52devices();
+
+
 private:
 
 

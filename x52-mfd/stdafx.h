@@ -3,6 +3,7 @@
 
 #include <chrono>
 #include <comdef.h>
+#include <functional>
 #include <iomanip>
 #include <iostream>
 #include <map>

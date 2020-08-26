@@ -101,3 +101,8 @@ X52Device* X52::device_get(void* hDevice)
 
 	return nullptr;
 }
+
+std::vector<X52Device*> X52::get_x52devices()
+{
+	return this->x52devices;
+}
