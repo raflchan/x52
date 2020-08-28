@@ -287,7 +287,6 @@
     <ClCompile Include="X52.cpp" />
     <ClCompile Include="X52Device.cpp" />
     <ClCompile Include="X52Page.cpp" />
-    <ClCompile Include="x52_python_wrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -296,15 +295,6 @@
     <ClInclude Include="X52Device.h" />
     <ClInclude Include="X52Page.h" />
     <ClInclude Include="x52_ids.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="LICENSE" />
-    <None Include="README.md" />
-    <None Include="setup.py" />
-    <None Include="x52\__init__.py" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="requirements.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "python", "python\python.pyproj", "{B418318F-AF1F-4966-83F7-8F03031E982B}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "x52", "x52\x52.vcxproj", "{44CD3A03-1781-450D-8E8C-24FAFEE811AE}"
 EndProject
 Global
@@ -23,18 +21,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.pybind Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.pybind Debug|x64.ActiveCfg = Debug|Any CPU
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.pybind Debug|x86.ActiveCfg = Debug|Any CPU
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.pybind Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.pybind Release|x64.ActiveCfg = Release|Any CPU
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.pybind Release|x86.ActiveCfg = Release|Any CPU
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.Release|x64.ActiveCfg = Release|Any CPU
-		{B418318F-AF1F-4966-83F7-8F03031E982B}.Release|x86.ActiveCfg = Release|Any CPU
 		{44CD3A03-1781-450D-8E8C-24FAFEE811AE}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{44CD3A03-1781-450D-8E8C-24FAFEE811AE}.Debug|x64.ActiveCfg = Debug|x64
 		{44CD3A03-1781-450D-8E8C-24FAFEE811AE}.Debug|x64.Build.0 = Debug|x64
